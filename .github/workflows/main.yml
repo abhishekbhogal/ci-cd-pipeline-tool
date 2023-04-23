@@ -52,7 +52,7 @@ jobs:
         password: ${{ secrets.MY_GITHUB_TOKEN }}
     
     - name: Install Docker CLI
-       run: |
+      run: |
         sudo apt-get update
         sudo apt-get install -y docker.io
 
