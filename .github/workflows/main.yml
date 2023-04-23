@@ -50,6 +50,11 @@ jobs:
           ref: v1.2.0
           path: ./.railway-cli
 
+      - name: Install Railway CLI
+        run: |
+          cd ./.railway-cli
+          npm install
+
       - name: Release to Railway
         run: |
           cd ./.railway-cli
@@ -57,14 +62,3 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
-
-
-#     - name: Install Railway CLI
-#       run: curl https://get.railway.app | bash
-#     - name: Login to Railway
-#       run: railway login
-#       env:
-#         RAILWAY_USERNAME: ${{ secrets.RAILWAY_USERNAME }}
-#         RAILWAY_PASSWORD: ${{ secrets.RAILWAY_PASSWORD }}
-#     - name: Release to Railway
-#       run: railway run "railway release ghcr.io/abhishekbhogal/takehome-assessment-copy:latest"
