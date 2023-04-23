@@ -49,7 +49,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ secrets.MY_GITHUB_USERNAME }}
-          password: ${{ secrets.MY_GITHUB_PASSWORD }}
+          password: ${{ secrets.MY_GITHUB_TOKEN }}
 
       - name: Verify Docker CLI
         run: docker --version
