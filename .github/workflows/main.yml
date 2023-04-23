@@ -37,46 +37,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-    - name: Install Dependencies
-      run: npm install
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ secrets.MY_GITHUB_USERNAME }}
-        password: ${{ secrets.MY_GITHUB_TOKEN }}
-    
-    - name: Verify Docker CLI
-      run: docker --version
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install Dependencies
+        run: npm install
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.MY_GITHUB_USERNAME }}
+          password: ${{ secrets.MY_GITHUB_PASSWORD }}
 
-
-    
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true
-        tags: ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+      - name: Verify Docker CLI
+        run: docker --version
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+          run: |
+                docker build . --tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+                docker run ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+          
+      - name: Push to Railway
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        uses: actions/checkout@v2
+      - name: Configure Docker
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+      - name: Push to Railway
         run: |
-              docker build . --tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
-              docker run ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
-              
-    - name: Push to Railway
-      env:
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      uses: actions/checkout@v2
-    - name: Configure Docker
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.MY_GITHUB_USERNAME }} --password-stdin
-    - name: Push to Railway
-      run: |
-          docker tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
-          docker push registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
-
+            docker tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
+            docker push registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
 
 
 
