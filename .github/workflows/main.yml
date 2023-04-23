@@ -57,7 +57,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/abhishekbhogal/takeHome-Assessment-copy:latest
+        tags: ghcr.io/abhishekbhogal/takehome-assessment-copy:latest
     - name: Install Railway CLI
       run: curl https://get.railway.app | bash
     - name: Login to Railway
@@ -66,4 +66,4 @@ jobs:
         RAILWAY_USERNAME: ${{ secrets.RAILWAY_USERNAME }}
         RAILWAY_PASSWORD: ${{ secrets.RAILWAY_PASSWORD }}
     - name: Release to Railway
-      run: railway run "railway release ghcr.io/abhishekbhogal/takeHome-Assessment-copy:latest"
+      run: railway run "railway release ghcr.io/abhishekbhogal/takehome-assessment-copy:latest"
