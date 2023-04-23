@@ -54,7 +54,7 @@ jobs:
         run: |
           railway link
           echo "Linked to Railway project"
-          railway deploy --build-arg IMAGE_TAG=${{ github.sha }}
+          railway deploy --build-arg IMAGE_TAG=${{ github.sha }} --project=$RAILWAY_PROJECT_ID
           echo "Project deplpyed"
 
 
