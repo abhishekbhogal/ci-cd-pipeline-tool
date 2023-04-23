@@ -4,7 +4,7 @@
 # Pushes the docker image to your GitHub Container Registry repository
 # Releases your newly pushed image to your Railway service using the Railway CLI
 
-name: Build and Deploy
+name: Build, Push, and Deploy
 
 on:
   push:
@@ -43,6 +43,12 @@ jobs:
           docker tag node-docker-veryable-copy ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
           docker push ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
 
+      - name: Release to Railway
+        uses: railwayapp/cli@v1.2.0
+        with:
+          args: deploy --image ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }} --env production --no-verify
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
 
 #     - name: Install Railway CLI
