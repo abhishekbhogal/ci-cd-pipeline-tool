@@ -57,7 +57,14 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/abhishekbhogal/takehome-assessment-copy:latest
+        #tags: ghcr.io/abhishekbhogal/takehome-assessment-copy:latest
+        
+        run: |
+              docker build . --tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+              docker run ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+              docker push ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+
+        
     - name: Install Railway CLI
       run: curl https://get.railway.app | bash
     - name: Login to Railway
