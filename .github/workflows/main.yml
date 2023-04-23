@@ -49,7 +49,7 @@ jobs:
       - name: Authenticate to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway login -t ${{ secrets.RAILWAY_TOKEN }}
+        run: railway login
 
 
 
