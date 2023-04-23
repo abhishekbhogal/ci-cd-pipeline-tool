@@ -70,7 +70,6 @@ jobs:
       run: |
           docker tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
           docker push registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
-          
 
 
 
