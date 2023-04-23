@@ -29,13 +29,14 @@ jobs:
     - name: Run tests
       run: npm run test
 
-    - name: Build Docker image
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
-        tags: abhishekbhogal/node-docker-veryable-copy:latest
+        tags: ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+        # Replace <USERNAME> and <IMAGE_NAME> with your GitHub username and desired image name
+
 
 
 
