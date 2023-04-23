@@ -52,7 +52,7 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
         run: |
-          railway link
+          railway link --project cb424146-b168-462a-a0e2-3c378329bd65
           echo "Linked to Railway project"
           railway deploy --build-arg IMAGE_TAG=${{ github.sha }} --project=$RAILWAY_PROJECT_ID
           echo "Project deplpyed"
