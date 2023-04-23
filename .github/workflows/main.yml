@@ -61,15 +61,24 @@ jobs:
         run: |
               docker build . --tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
               docker run ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
-              docker push ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest
+              
+    - name: Push to Railway
+      uses: actions/checkout@v2
+    - name: Configure Docker
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    - name: Push to Railway
+      run: |
+          docker tag ghcr.io/abhishekbhogal/node-docker-veryable-copy:latest registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
+          docker push registry.railway.app/veryable-takehome-assessment/node-docker-veryable-copy:latest
+
 
         
-    - name: Install Railway CLI
-      run: curl https://get.railway.app | bash
-    - name: Login to Railway
-      run: railway login
-      env:
-        RAILWAY_USERNAME: ${{ secrets.RAILWAY_USERNAME }}
-        RAILWAY_PASSWORD: ${{ secrets.RAILWAY_PASSWORD }}
-    - name: Release to Railway
-      run: railway run "railway release ghcr.io/abhishekbhogal/takehome-assessment-copy:latest"
+#     - name: Install Railway CLI
+#       run: curl https://get.railway.app | bash
+#     - name: Login to Railway
+#       run: railway login
+#       env:
+#         RAILWAY_USERNAME: ${{ secrets.RAILWAY_USERNAME }}
+#         RAILWAY_PASSWORD: ${{ secrets.RAILWAY_PASSWORD }}
+#     - name: Release to Railway
+#       run: railway run "railway release ghcr.io/abhishekbhogal/takehome-assessment-copy:latest"
