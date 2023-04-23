@@ -44,4 +44,4 @@ jobs:
           docker push ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
     
       - name: Install Railway CLI
-        run: curl -sSL https://get.railway.app | bash
+        run: curl -ssL https://get.railway.app | bash
