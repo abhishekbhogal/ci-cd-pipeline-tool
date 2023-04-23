@@ -50,6 +50,13 @@ jobs:
         registry: ghcr.io
         username: ${{ secrets.MY_GITHUB_USERNAME }}
         password: ${{ secrets.MY_GITHUB_TOKEN }}
+    
+    - name: Install Docker CLI
+       run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+
+    
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
