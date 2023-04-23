@@ -13,7 +13,8 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  build:
+  
     runs-on: ubuntu-latest
 
     steps:
