@@ -46,11 +46,13 @@ jobs:
       - name: Install Railway
         run: npm i -g @railway/cli
 
+          
       - name: Release to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           railway link
-          railway deploy --build-arg IMAGE_TAG=${{ github.sha }}
+          railway deploy --project=my-project-name --build-arg IMAGE_TAG=${{ github.sha }}
+
 
 
