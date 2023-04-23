@@ -50,8 +50,9 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          railway link
-          railway deploy --project=my-first-railway-deploy --build-arg IMAGE_TAG=${{ github.sha }}
+          railway link my-first-railway-deployment
+          railway deploy --project=my-first-railway-deployment --build-arg IMAGE_TAG=${{ github.sha }}
+
 
 
 
