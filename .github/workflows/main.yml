@@ -42,13 +42,21 @@ jobs:
         run: |
           docker tag node-docker-veryable-copy ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
           docker push ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
+          
+      - name: Checkout actions repository
+        uses: actions/checkout@v2
+        with:
+          repository: railwayapp/cli
+          ref: v1.2.0
+          path: ./.railway-cli
 
       - name: Release to Railway
-        uses: railwayapp/cli@v1.2.0
-        with:
-          args: deploy --image ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }} --env production --no-verify
+        run: |
+          cd ./.railway-cli
+          ./railway deploy --image ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }} --env production --no-verify
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
 
 
 #     - name: Install Railway CLI
