@@ -53,7 +53,8 @@ jobs:
 
       - name: LOGIN
         run: railway run
-        run: RAILWAY_TOKEN=${{ secrets.RAILWAY_PROJECT_ID }}
+        env: 
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_ID }}
 
 
 
