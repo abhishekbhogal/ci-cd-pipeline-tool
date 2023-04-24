@@ -51,9 +51,10 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_ID }}
 
-      - name: Deploy in Railway
-        run: railway logs
-      
+      - name: LOGIN
+        run: railway login --browserless
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
 
 
