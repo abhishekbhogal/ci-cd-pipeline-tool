@@ -50,6 +50,9 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_ID }}
+          
+      - name: RAILWAY LINK
+        run: railway link ${{ secrets.RAILWAY_PROJECT_ID }}
       
       # Run your Node.js project with your remote environment variables
       - name: Run node.js app
