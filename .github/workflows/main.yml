@@ -49,6 +49,6 @@ jobs:
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway run --detach --env MY_ENV_VAR=value ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
+        run: railway run -- --detach --env MY_ENV_VAR=value ghcr.io/abhishekbhogal/takehome-assessment-copy/node-docker-veryable-copy:${{ github.sha }}
 
 
