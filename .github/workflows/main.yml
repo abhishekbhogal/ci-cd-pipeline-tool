@@ -46,11 +46,16 @@ jobs:
       - name: Install Railway
         run: npm i -g @railway/cli
           
-      - name: Authenticate to Railway
+      - name: Generate Railway login token
+        run: |
+          railway login:ci
+          echo "RAILWAY_TOKEN=$RAILWAY_TOKEN" >> $GITHUB_ENV
+
+      - name: Release to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          CI: false
-        run: railway login
+          RAILWAY_PROJECT_ID: <span class="math-inline">\{\{ secrets\.RAILWAY\_PROJECT\_ID \}\}
+
 
 
 
