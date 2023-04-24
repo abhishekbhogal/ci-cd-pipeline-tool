@@ -52,7 +52,7 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_ID }}
 
       - name: LOGIN
-        run: RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }} railway run
+        run: RAILWAY_TOKEN=${{ secrets.RAILWAY_PROJECT_ID }} railway run
 
 
 
