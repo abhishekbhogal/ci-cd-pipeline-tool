@@ -46,11 +46,11 @@ jobs:
       - name: Install Railway
         run: npm i -g @railway/cli
         
-      - name: Authenticate to Railway
-        env:
-          RAILWAY_TOKEN: 'ab480e75-f4d9-4c6f-8de0-052d6baa7f61'
-          RAILWAY_EMAIL: 'abhishek.bhogal7@gmail.com'
-          #RAILWAY_PASSWORD: ${{ secrets.RAILWAY_PASSWORD }}
+      - name: Authenticate with Railway CLI
         run: railway login
+
+      - name: Display authentication information
+        run: railway whoami
+
 
 
