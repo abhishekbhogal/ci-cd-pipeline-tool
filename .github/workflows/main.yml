@@ -52,10 +52,9 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_ID }}
 
       - name: RUN RAILWAY APP
-        run: railway run
         env:
-          RAILWAY_TOKEN: 'c23e0c58-5041-4f8f-ae06-9362d8e1d294'
-
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway run logs
 
 
 
