@@ -51,6 +51,6 @@ jobs:
           RAILWAY_TOKEN: 'ab480e75-f4d9-4c6f-8de0-052d6baa7f61'
           RAILWAY_EMAIL: 'abhishek.bhogal7@gmail.com'
           #RAILWAY_PASSWORD: ${{ secrets.RAILWAY_PASSWORD }}
-        run: railway login --no-prompt
+        run: railway login
 
 
