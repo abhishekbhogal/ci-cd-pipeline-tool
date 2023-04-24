@@ -49,8 +49,8 @@ jobs:
       - name: Authenticate with Railway CLI
         run: railway login
 
-      - name: Display authentication information
-        run: railway whoami
+#       - name: Display authentication information
+#         run: railway whoami
 
 
 
