@@ -22,12 +22,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+# Install the npm dependencies
       - name: Install dependencies
         run: npm install
 
+# Runs the testcases
       - name: Test code
         run: npm run test
-
+        
+# Builds the docker image and pushes
       - name: Build Docker image
         run: docker build -t node-docker-veryable-copy .
 
@@ -38,14 +41,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.MY_GITHUB_TOKEN }}
 
+# publish a Docker image to GitHub Container and we can download it
       - name: Push Docker image
         run: |
           docker tag node-docker-veryable-copy ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
           docker push ghcr.io/${{ github.repository }}/node-docker-veryable-copy:${{ github.sha }}
     
+#Install the railway cli     
       - name: Install Railway
         run: npm i -g @railway/cli
 
+#Up the railway service which is linked with the projectID secret generated via railway.app
       - name: Deploy in Railway
         run: railway up
         env:
@@ -53,7 +59,7 @@ jobs:
 
 
 
-
+# Manually add the port variable in the service PORT: 3000 
 
 
 
