@@ -57,7 +57,7 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_ID }}
 
-#modiciation to add logs in realtime
+#modiciation to add logs in real-time
 
 # Manually add the port variable in the service PORT: 3000 
 
