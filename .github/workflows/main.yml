@@ -1,7 +1,7 @@
 # Write a github actions workflow that does the following:
 # Tests the code using Jest and the pre-built `npm run test` command
 # Builds a docker image using the Dockerfile that you have written
-# Pushes the docker image to your GitHub Container Registry repository
+# Pushes the docker image to your GitHub Container Registry repository.
 # Releases your newly pushed image to your Railway service using the Railway CLI
 
 name: Build and Deploy
